@@ -1,7 +1,6 @@
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
-        // this fails at [0,0,0]
         sort(nums.begin(), nums.end());
         vector<vector<int>> ret;
         int len = nums.size();
@@ -24,6 +23,7 @@ public:
     vector<vector<int>> twosum (vector<int>& nums, int start, int end, int target)
     {
         vector<vector<int>> result;
+        // use unordered_set will fails at [0,0,0]
         unordered_map<int, int> tmp;
         int prev = 0;
         // cout << "target:" <<target << "\n";
