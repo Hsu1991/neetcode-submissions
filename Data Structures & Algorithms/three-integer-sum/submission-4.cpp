@@ -23,13 +23,16 @@ public:
     vector<vector<int>> twosum (vector<int>& nums, int start, int end, int target)
     {
         vector<vector<int>> result;
-        // use unordered_set will fails at [0,0,0]
+        // unordered_set + [1] =  fails at [0,0,0]
         unordered_map<int, int> tmp;
         int prev = 0;
         // cout << "target:" <<target << "\n";
         for(int i = start; i < end; i++)
         {
             // cout << nums[i] << "\n";
+            //if(i != 0 && nums[i] == prev) --> [1]
+            //    // duplicates
+            //    continue;
             if(tmp.contains(target - nums[i]) && tmp[target - nums[i]] == 0)
             {
                 vector<int> valid_pair;
