@@ -35,7 +35,13 @@ public:
             // WHEN i = 1, nums[l] = -1 and nums[r] = 4 first compare for two sum. 
             // THEN r--, However, in next iteration the l is being checked with duplicates detection logic
             // IT IS POSSIBLE THAT this l can be paired with the new r. WE CAN NOT JUST CHECK THE DUPLICATES HERE and DISCARD
-            // IT IS just "lucky" that the duplicates start at beginning so my solution
+            
+            // 1. IT IS just "lucky" that the duplicates start at beginning so my solution seems work
+            // 2. OUT of bound element checks if l is not moved yet
+            
+            // The core issue is: duplicate check fires on every iteration regardless of whether a match was found, 
+            // so it wrongly skips l values that were never part of any pushed result. 
+            // It should ONLY skip duplicates after a successful push_back, which is exactly what the while skip loops after a match achieve.
             if(l != start && (numbers[l] == numbers[l - 1]))
             {
                 l++;
