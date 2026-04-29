@@ -1,4 +1,5 @@
 class Solution {
+// NOT A WORKING solution, because the incorrect duplicates detection logic 
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         // use optimal way, two pointers
@@ -30,6 +31,11 @@ public:
         while(l < r)
         {
             int sum = numbers[l] + numbers[r];
+            // checkout about input:[-2, -1,-1,0,0,1,2,3,4]
+            // WHEN i = 1, nums[l] = -1 and nums[r] = 4 first compare for two sum. 
+            // THEN r--, However, in next iteration the l is being checked with duplicates detection logic
+            // IT IS POSSIBLE THAT this l can be paired with the new r. WE CAN NOT JUST CHECK THE DUPLICATES HERE and DISCARD
+            // IT IS just "lucky" that the duplicates start at beginning so my solution
             if(l != start && (numbers[l] == numbers[l - 1]))
             {
                 l++;
