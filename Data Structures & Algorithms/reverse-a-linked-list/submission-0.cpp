@@ -15,6 +15,7 @@ class Solution {
         if (head == nullptr || head->next == nullptr) {
             return head;
         }
+       // mistake 1: syntax error: prev = nullptr
         ListNode *curr = head, *prev = nullptr, *next = nullptr;
         while (curr != nullptr) {
             ListNode* next = curr->next;
@@ -22,6 +23,7 @@ class Solution {
             prev = curr;
             curr = next;
         }
+       // mistake 2: return curr instead of curr
         return prev;
     }
 };
